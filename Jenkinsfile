@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes  {
+            inheritFrom 'pre'
+        }
+    }
     stages {
         stage('Hello world'){
             steps {

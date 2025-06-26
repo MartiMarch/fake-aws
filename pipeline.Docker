@@ -1,0 +1,10 @@
+FROM alpine:3.20.3
+
+USER root
+RUN  apk add --no-cache sudo \
+&&   apk add --no-cache bash \
+&&   adduser -D -h /home/jenkins -s /bin/bash jenkins \
+&&   echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
+USER jenkins
+
+CMD ["bash"]
