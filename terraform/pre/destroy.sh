@@ -1,0 +1,1 @@
+terraform destroy -var-file="../base/base.tfvars" -var-file="pre.tfvars"

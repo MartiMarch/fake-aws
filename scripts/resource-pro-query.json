@@ -1,0 +1,8 @@
+{
+  "Name": "fwk-aws-pro",
+  "Description": "Recursos del entorno pro para el proyecto fwk-fake",
+  "ResourceQuery": {
+    "Type": "TAG_FILTERS_1_0",
+    "Query": "{\"ResourceTypeFilters\":[\"AWS::AllSupported\"],\"TagFilters\":[{\"Key\":\"project\",\"Values\":[\"fwk-fake\"]},{\"Key\":\"env\",\"Values\":[\"pro\"]}]}"
+  }
+}
