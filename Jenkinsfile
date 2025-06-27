@@ -9,7 +9,7 @@ pipeline {
               hostAliases:
                 - ip: "192.168.2.80"
                 hostnames:
-                    - "pre.jenkins.com"
+                  - "pre.jenkins.com"
               imagePullSecrets:
                 - name: nexus-pre
               containers:
