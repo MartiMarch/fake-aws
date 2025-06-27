@@ -14,7 +14,7 @@ pipeline {
                 - name: nexus-pre
               containers:
                 - name: jnlp
-                  image: pre.docker.nexus.com/jnlp:0.0.2
+                  image: pre.docker.nexus.com/jnlp:0.0.4
                   imagePullPolicy: Always
             '''
         }
