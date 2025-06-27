@@ -23,10 +23,10 @@ pipeline {
         stage('Validating git policies'){
             steps{
                 container('jenkins-agent'){
-                    steps {
+                    script{
                         if(isMrToMaster() && (env.CHANGE_BRANCH != 'pre')){
                             currentBuild.result = 'ABORTED'
-                            error("Can't merge to master if source branc from PR is not pre")
+                            error("Can't merge to master if source branch from PR is not pre")
                         }
                     }
                 }
@@ -35,7 +35,7 @@ pipeline {
         stage('Pytohn'){
             steps {
                 container('jenkins-agent'){
-                    steps{
+                    script{
                         echo "Hola!"
                     }
                 }
