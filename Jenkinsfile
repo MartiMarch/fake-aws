@@ -2,6 +2,11 @@ pipeline {
     agent {
         kubernetes  {
             inheritFrom 'pre'
+            yaml '''
+            spec:
+              imagePullSecrets:
+              - name: pre.nexus
+            '''
         }
     }
     stages {
