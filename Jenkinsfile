@@ -20,10 +20,57 @@ pipeline {
         }
     }
     stages {
-        stage('Hello world'){
-            steps {
-                echo "Hola!"
+        stage('Validating git policies'){
+            steps{
+                container('jenkins-agent'){
+                    steps {
+                        if(isMrToMaster() && (env.CHANGE_BRANCH != 'pre')){
+                            currentBuild.result = 'ABORTED'
+                            error("Can't merge to master if source branc from PR is not pre")
+                        }
+                    }
+                }
             }
         }
+        stage('Pytohn'){
+            steps {
+                container('jenkins-agent'){
+                    steps{
+                        echo "Hola!"
+                    }
+                }
+            }
+        }
+        /*
+        stage(''){
+            steps {
+                container('jenkins-agent'){
+                    steps{
+
+                    }
+                }
+            }
+        }
+        */
     }
+}
+
+boolean isPre(){
+    return env.BRANCH_NAME == 'master'
+}
+
+boolean isMaster(){
+    return env.BRANCH_NAME = 'pre'
+}
+
+boolean isMrToMaster(){
+    if(env.CHANGE_TARGET == 'master')
+        return true
+    return false
+}
+
+boolean isMrToPre(){
+    if(env.CHANGE_TARGET == 'pre')
+        return true
+    return false
 }
