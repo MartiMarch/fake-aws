@@ -5,7 +5,7 @@ pipeline {
             yaml '''
             spec:
               imagePullSecrets:
-                - name: pre-nexus
+                - name: nexus-pre
             '''
         }
     }
