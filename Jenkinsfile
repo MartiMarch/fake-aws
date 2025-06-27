@@ -8,7 +8,7 @@ pipeline {
             spec:
               hostAliases:
                 - ip: "192.168.2.80"
-                hostnames:
+                  hostnames:
                   - "pre.jenkins.com"
               imagePullSecrets:
                 - name: nexus-pre
