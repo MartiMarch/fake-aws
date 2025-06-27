@@ -6,6 +6,10 @@ pipeline {
             apiVersion: v1
             kind: Pod
             spec:
+              hostAliases:
+                - ip: "192.168.2.80"
+                hostnames:
+                    - "pre.jenkins.com"
               imagePullSecrets:
                 - name: nexus-pre
               containers:
