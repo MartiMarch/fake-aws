@@ -36,7 +36,12 @@ pipeline {
             steps {
                 container('jenkins-agent'){
                     script{
-                        echo "Hola!"
+                        sh  """
+                            apk add --no-cache python3
+                            apk add --no-cache poetry
+                            poetry lock --no-cache
+                            poetry install --no-cache
+                        """
                     }
                 }
             }
@@ -64,13 +69,9 @@ boolean isMaster(){
 }
 
 boolean isMrToMaster(){
-    if(env.CHANGE_TARGET == 'master')
-        return true
-    return false
+    return env.CHANGE_TARGET == 'master'
 }
 
 boolean isMrToPre(){
-    if(env.CHANGE_TARGET == 'pre')
-        return true
-    return false
+    return env.CHANGE_TARGET == 'pre'
 }
