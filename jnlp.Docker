@@ -1,9 +1,16 @@
-FROM jenkins/inbound-agent:3309.v27b_9314fd1a_4-1
+FROM jenkins/inbound-agent
 
 USER root
 
 COPY ca.crt /usr/local/share/ca-certificates/ca.crt
 RUN update-ca-certificates \
-&&  keytool -import -noprompt -trustcacerts -alias my-ca -file /usr/local/share/ca-certificates/ca.crt -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit
+&&  keytool \
+      -import \
+      -noprompt \
+      -trustcacerts \
+      -alias custom-ca \
+      -file /usr/local/share/ca-certificates/ca.crt \
+      -keystore $JAVA_HOME/lib/security/cacerts \
+      -storepass changeit
 
 USER jenkins
