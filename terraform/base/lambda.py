@@ -43,7 +43,7 @@ def send_email_via_ses():
     ses = boto3.client(
         'ses',
         region_name='us-east-1',
-        endpoint_url='https://ses-api.us-east-1.amazonaws.com',
+        endpoint_url=LOCALSTACK_ENDPOINT,
         aws_access_key_id='fake-key',
         aws_secret_access_key='fake-key'
     )
